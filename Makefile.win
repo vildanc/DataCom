@@ -1,0 +1,31 @@
+# Project: Project2
+# Makefile created by Dev-C++ 5.11
+
+CPP      = 
+CC       = 
+WINDRES  = 
+OBJ      = server.o client.o
+LINKOBJ  = server.o client.o
+LIBS     = -L"C:/MinGW/lib" ../../../../MinGW/lib/-lws2_32
+INCS     = -I"C:/MinGW/include"
+CXXINCS  = -I"C:/MinGW/include"
+BIN      = Project2.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+server.o: server.c
+	$(CPP) -c server.c -o server.o $(CXXFLAGS)
+
+client.o: client.c
+	$(CPP) -c client.c -o client.o $(CXXFLAGS)
